@@ -1,0 +1,169 @@
+from tkinter import *
+def c():       
+    if op == 'm':
+        i = n1.get()/12/100
+        i2 = n2.get()/12/100
+        t = n4.get()*12
+        t2 = n5.get()*12
+        t3 = n6.get()*12
+        p = n3.get()
+        
+
+        ans = (p*(i))/(1-(1+i)**(-t))
+        ansp = ans*(1-(1+i)**(-t2))/i
+        ansk = ansp*(i2)/(1-(1+i2)**(-t3))
+        ansi = ansk-ans
+        ansa = (ans*t2-ansp)-(ansk*t3-ansp)
+        respon1["text"] = ans
+        respon1["bg"] = ["#FFFFDE"]
+        respon2["text"] = ansk
+        respon2["bg"] = ["#FFFFDE"]
+        respon3["text"] = ansp
+        respon3["bg"] = ["#FFFFDE"]
+        respon4["text"] = ansi
+        respon4["bg"] = ["#FFFFDE"]
+        respon5["text"] = ansa
+        respon5["bg"] = ["#FFFFDE"]
+        
+    elif op == 'y':
+        i = n1.get()/100
+        i2 = n2.get()/100
+        t = n4.get()
+        t2 = n5.get()
+        t3 = n6.get()
+        p = n3.get()
+
+        ans = (p*(i))/(1-(1+i)**(-t))
+        ansp = ans*(1-(1+i)**(-t2))/i
+        ansk = ansp*(i2)/(1-(1+i2)**(-t3))
+        ansi = ansk-ans
+        ansa = (ans*t2-ansp)-(ansk*t3-ansp)
+        respon1["text"] = ans
+        respon1["bg"] = ["#FFFFDE"]
+        respon2["text"] = ansk
+        respon2["bg"] = ["#FFFFDE"]
+        respon3["text"] = ansp
+        respon3["bg"] = ["#FFFFDE"]
+        respon4["text"] = ansi
+        respon4["bg"] = ["#FFFFDE"]
+        respon5["text"] = ansa
+        respon5["bg"] = ["#FFFFDE"]
+        
+    elif op == 's':
+        i = n1.get()/4/100
+        i2 = n2.get()/4/100
+        t = n4.get()*4
+        t2 = n5.get()*4
+        t3 = n6.get()*4
+        p = n3.get()
+
+        ans = (p*(i))/(1-(1+i)**(-t))
+        ansp = ans*(1-(1+i)**(-t2))/i
+        ansk = ansp*(i2)/(1-(1+i2)**(-t3))
+        ansi = ansk-ans
+        ansa = (ans*t2-ansp)-(ansk*t3-ansp)
+        respon1["text"] = ans
+        respon1["bg"] = ["#FFFFDE"]
+        respon2["text"] = ansk
+        respon2["bg"] = ["#FFFFDE"]
+        respon3["text"] = ansp
+        respon3["bg"] = ["#FFFFDE"]
+        respon4["text"] = ansi
+        respon4["bg"] = ["#FFFFDE"]
+        respon5["text"] = ansa
+        respon5["bg"] = ["#FFFFDE"]
+    
+def s():
+    global op
+    op = 's'
+    
+def y():
+    global op
+    op = 'y'
+    
+def m():
+    global op
+    op = 'm'
+    
+    
+
+window = Tk()
+window.title("ARM")  
+window.geometry("250x350")  # 視窗大小
+
+
+n1 = DoubleVar()                   
+n2 = DoubleVar()
+n3 = IntVar()
+n4 = IntVar()
+n5 = IntVar()
+n6 = IntVar()
+
+op = StringVar()
+ob = IntVar()
+
+op = 's'
+
+label = Label(window,width=12,text='Rate1(%/year)')
+label2 = Label(window,width=12,text='Rate2(%/year)') 
+label3 = Label(window,width=12,text='Loan($)')
+label4 = Label(window,width=12,text='Term(year)')
+label5 = Label(window,width=12,text='Rest term(year)')
+label6 = Label(window,width=12,text='New term(year)')
+
+respon1 = Label(window)
+respon2 = Label(window)
+respon3 = Label(window)
+respon4 = Label(window)
+respon5 = Label(window)
+
+num = Label(window,width=12,text='Payment before')
+num2 = Label(window,width=12,text='Payment after')
+num3 = Label(window,width=12,text='Remaining after')
+num4 = Label(window,width=14,text='Payment increase')
+num5 = Label(window,width=14,text='Interest saving')
+e1 = Entry(window,width=18,textvariable=n1)  
+e2 = Entry(window,width=18,textvariable=n2)  
+e3 = Entry(window,width=18,textvariable=n3)
+e4 = Entry(window,width=18,textvariable=n4)
+e5 = Entry(window,width=18,textvariable=n5)
+e6 = Entry(window,width=18,textvariable=n6)
+unit = Label(window,width=7,text='Unit')
+btn = Button(window,width=8,text="Calculate",command=c)   
+sbtn = Radiobutton(window, text="season",variable=ob, value=1, command=s)
+ybtn = Radiobutton(window, text="year",variable=ob, value=2,  command=y)
+mbtn = Radiobutton(window, text="month",variable=ob, value=3,  command=m)
+sbtn.select()
+
+
+label.grid(row=0,column=0,padx=5)           
+label2.grid(row=1,column=0,padx=5)
+label3.grid(row=2,column=0,padx=5)
+label4.grid(row=3,column=0,padx=5)
+label5.grid(row=4,column=0,padx=5)
+label6.grid(row=5,column=0,padx=5)
+e1.grid(row=0,column=1)                  
+e2.grid(row=1,column=1)
+e3.grid(row=2,column=1)
+e4.grid(row=3,column=1)
+e5.grid(row=4,column=1)
+e6.grid(row=5,column=1)
+num.grid(row=6,column=0)
+num3.grid(row=7,column=0)
+num2.grid(row=8,column=0)
+num4.grid(row=9,column=0)
+num5.grid(row=10,column=0)
+respon1.grid(row=6,column=1)
+respon2.grid(row=8,column=1)
+respon3.grid(row=7,column=1)
+respon4.grid(row=9,column=1)
+respon5.grid(row=10,column=1)
+unit.grid(row=11,column=0)
+btn.grid(row=14,column=1,pady=5)
+sbtn.grid(row=11,column=1)
+ybtn.grid(row=12,column=1)
+mbtn.grid(row=13,column=1)
+
+
+
+window.mainloop()
